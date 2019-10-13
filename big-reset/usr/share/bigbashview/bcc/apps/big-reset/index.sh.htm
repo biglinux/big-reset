@@ -1,0 +1,242 @@
+#!/bin/bash
+
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=bigkernel
+
+# Import BigControlCenter base modules / Importa os módulos básicos do BigControlCenter
+# That's include jquery and materialize / Isso inclui o jquery e o materialize
+# http://materializecss.com/
+. /usr/share/bigbashview/bcc/shell/base.sh
+
+
+#Title/Description variables
+bcc_title="BigLinux Reset"
+bcc_description=$"Restaure as configurações dos programas"
+# To disable logo use: bcc_logo="no"
+bcc_logo="logo.png"
+
+# About variables
+# To disable about use: bcc_about="no"
+bcc_about="yes"
+bcc_about_license=$"GPL v2 or greater"
+bcc_about_by=$"Bruno Gonçalves"
+bcc_about_release_date=$"15/07/2017"
+bcc_about_url_code=$"https://github.com/biglinux"
+bcc_about_url_project=$"https://www.biglinux.com.br"
+
+# Print header in screen
+bcc_header
+
+echo '<link href="icon.css" rel="stylesheet">
+	  <style type="text/css">a {  font-weight: 900; } </style>'
+
+###############
+# Start Content
+
+echo '<div class="row">
+        <div class="col s12">
+          <ul class="tabs z-depth-3">
+            <li class="tab col s2">
+              <a class="waves-effect waves-light blue-grey white-text lighten-1 active" href="#test1">
+                <i class="material-icons Tiny">settings</i>' $"Sistema" '</a></li>
+            <li class="tab col s2">
+              <a class="waves-effect waves-light blue-grey white-text lighten-1" href="#test2">
+                <i class="material-icons Tiny">edit</i>' $"Escritório" '</a></li>
+            <li class="tab col s2">
+              <a class="waves-effect waves-light blue-grey white-text lighten-1" href="#test3">
+                <i class="material-icons Tiny">camera_alt</i>' $"Gráficos" '</a></li>
+            <li class="tab col s2">
+              <a class="waves-effect waves-light blue-grey white-text lighten-1" href="#test4">
+                <i class="material-icons Tiny">wifi</i>' $"Internet" '</a></li>
+            <li class="tab col s2">
+              <a class="waves-effect waves-light blue-grey white-text lighten-1" href="#test5">
+                <i class="material-icons Tiny">music_video</i>' $"Multimídia" '</a></li>
+            <li class="tab col s2">
+              <a class="waves-effect waves-light blue-grey white-text lighten-1" href="#test6">
+                <i class="material-icons Tiny">apps</i>' $"Apps Big" '</a></li>
+          </ul>
+        </div>'
+
+
+echo '<div id="test1" class="col s12"><br>'     
+  echo '<div class="row">'
+
+
+    echo '<div class="col s2 center-align"><p><img src="icons/compton.png"></p><p><b>Compton</b></p>'    
+      echo "<button onclick=\"_run('./big-reset-exec.sh compton')\" class=\"waves-effect waves-light btn blue-grey lighten-1\">" $"Restaurar" "</button>"
+    echo '</div>'
+    echo '<div class="col s2 center-align"><p><img src="icons/openbox.png"></p><p><b>Openbox</b></p>'    
+      echo "<button onclick=\"_run('./big-reset-exec.sh openbox')\" class=\"waves-effect waves-light btn blue-grey lighten-1\">" $"Restaurar" "</button>"
+    echo '</div>'
+    echo '<div class="col s2 center-align"><p><img src="icons/compiz.png"></p><p><b>Compiz</b></p>'    
+      echo "<button onclick=\"_run('./big-reset-exec.sh compiz')\" class=\"waves-effect waves-light btn blue-grey lighten-1\">" $"Restaurar" "</button>"
+    echo '</div>'
+    echo '<div class="col s2 center-align"><p><img src="icons/kde.png"></p><p><b>KDE</b></p>'    
+      echo "<button onclick=\"_run('bigsudo ./big-reset-exec.sh kde')\" class=\"waves-effect waves-light btn blue-grey lighten-1\">" $"Restaurar" "</button>"
+    echo '</div>'
+    echo '<div class="col s2 center-align"><p><img src="icons/lxqt.png"></p><p><b>LXQt</b></p>'    
+      echo "<button onclick=\"_run('./big-reset-exec.sh lxqt')\" class=\"waves-effect waves-light btn blue-grey lighten-1\">" $"Restaurar" "</button>"
+    echo '</div>'
+    echo '<div class="col s2 center-align"><p><img src="icons/konsole.png"></p><p><b>Konsole</b></p>'    
+      echo "<button onclick=\"_run('./big-reset-exec.sh konsole')\" class=\"waves-effect waves-light btn blue-grey lighten-1\">" $"Restaurar" "</button>"
+    echo '</div>'
+    echo '<div class="col s2 center-align"><p><img src="icons/pcmanfm.png"></p><p><b>PCManFm-Qt</b></p>'    
+      echo "<button onclick=\"_run('./big-reset-exec.sh pcmanfm')\" class=\"waves-effect waves-light btn blue-grey lighten-1\">" $"Restaurar" "</button>"
+    echo '</div>'
+
+
+
+  
+  echo '</div>'
+echo '</div>'
+
+
+echo '<div id="test2" class="col s12"><br>'
+  echo '<div class="row">'
+
+
+
+    echo '<div class="col s2 center-align"><p><img src="icons/libreoffice.png"></p><p><b>LibreOffice</b></p>'    
+      echo "<button onclick=\"_run('./big-reset-exec.sh libreoffice')\" class=\"waves-effect waves-light btn blue-grey lighten-1\">" $"Restaurar" "</button>"
+    echo '</div>'
+ 
+
+
+  echo '</div>'
+echo '</div>'
+
+
+echo '<div id="test3" class="col s12"><br>'
+  echo '<div class="row">'
+
+
+    echo '<div class="col s2 center-align"><p><img src="icons/gimp.png"></p><p><b>GIMP</b></p>'    
+      echo "<button onclick=\"_run('./big-reset-exec.sh gimp')\" class=\"waves-effect waves-light btn blue-grey lighten-1\">" $"Restaurar" "</button>"
+    echo '</div>'
+
+
+  echo '</div>'
+echo '</div>'
+
+
+
+
+echo '<div id="test4" class="col s12"><br>'
+  echo '<div class="row">'
+
+
+    if [ "$(dpkg --get-selections | grep "\<google-chrome\>")" != "" ]; then
+      echo '<div class="col s2 center-align"><p><img src="icons/chrome.png"></p><p><b>Google Chrome</b></p>'    
+        echo "<button onclick=\"_run('./big-reset-exec.sh chrome')\" class=\"waves-effect waves-light btn blue-grey lighten-1\">" $"Restaurar" "</button>"
+      echo '</div>'
+    fi
+    if [ "$(dpkg --get-selections | grep "\<firefox\>")" != "" ]; then
+      echo '<div class="col s2 center-align"><p><img src="icons/firefox.png"></p><p><b>Firefox</b></p>'    
+        echo "<button onclick=\"_run('./big-reset-exec.sh firefox')\" class=\"waves-effect waves-light btn blue-grey lighten-1\">" $"Restaurar" "</button>"
+      echo '</div>'
+    fi
+    if [ "$(dpkg --get-selections | grep "\<chromium-browser\>")" != "" ]; then
+      echo '<div class="col s2 center-align"><p><img src="icons/chromium.png"></p><p><b>Chromium</b></p>'    
+        echo "<button onclick=\"_run('./big-reset-exec.sh chromium')\" class=\"waves-effect waves-light btn blue-grey lighten-1\">" $"Restaurar" "</button>"
+      echo '</div>'
+    fi
+    if [ "$(dpkg --get-selections | grep "\<min\>")" != "" ]; then
+      echo '<div class="col s2 center-align"><p><img src="icons/min.png"></p><p><b>Min</b></p>'    
+        echo "<button onclick=\"_run('./big-reset-exec.sh min')\" class=\"waves-effect waves-light btn blue-grey lighten-1\">" $"Restaurar" "</button>"
+      echo '</div>'
+    fi
+    if [ "$(dpkg --get-selections | grep "\<brave-browser\>")" != "" ]; then
+      echo '<div class="col s2 center-align"><p><img src="icons/brave.png"></p><p><b>Brave</b></p>'    
+        echo "<button onclick=\"_run('./big-reset-exec.sh brave')\" class=\"waves-effect waves-light btn blue-grey lighten-1\">" $"Restaurar" "</button>"
+      echo '</div>'
+    fi
+    if [ "$(dpkg --get-selections | grep "\<qbittorrent\>")" != "" ]; then
+      echo '<div class="col s2 center-align"><p><img src="icons/qbittorrent.png"></p><p><b>qBittorrent</b></p>'    
+        echo "<button onclick=\"_run('./big-reset-exec.sh qbittorrent')\" class=\"waves-effect waves-light btn blue-grey lighten-1\">" $"Restaurar" "</button>"
+      echo '</div>'
+    fi
+
+
+  
+  echo '</div>'
+echo '</div>'
+
+
+
+echo '<div id="test5" class="col s12"><br>'
+  echo '<div class="row">'
+
+
+
+    echo '<div class="col s2 center-align"><p><img src="icons/smplayer.png"></p><p><b>SMPlayer</b></p>'    
+      echo "<button onclick=\"_run('./big-reset-exec.sh smplayer')\" class=\"waves-effect waves-light btn blue-grey lighten-1\">" $"Restaurar" "</button>"
+    echo '</div>'
+    echo '<div class="col s2 center-align"><p><img src="icons/clementine.png"></p><p><b>Clementine</b></p>'    
+      echo "<button onclick=\"_run('./big-reset-exec.sh clementine')\" class=\"waves-effect waves-light btn blue-grey lighten-1\">" $"Restaurar" "</button>"
+    echo '</div>'
+  
+
+
+
+  echo '</div>'
+echo '</div>'
+
+
+
+echo '<div id="test6" class="col s12"><br>'
+  echo '<div class="row">'
+
+
+    echo '<div class="col s2 center-align"><p><img src="icons/apache.png"></p><p><b>Desenvolvimento WEB</b></p><br>'    
+      echo "<button onclick=\"_run('./open-apps-exec.sh web')\" class=\"waves-effect waves-light btn blue-grey lighten-1 \">" $"Abrir" "</button>"
+    echo '</div>'
+    echo '<div class="col s2 center-align"><p><img src="icons/kernel.png"></p><p><b>Boot, Kernel, Grub, Initrd e Drivers</b></p>'    
+      echo "<button onclick=\"_run('./open-apps-exec.sh kernel')\" class=\"waves-effect waves-light btn blue-grey lighten-1 \">" $"Abrir" "</button>"
+    echo '</div>'
+    echo '<div class="col s2 center-align"><p><img src="icons/plugins.png"></p><p><b>Widevine, javaws, flash e fontes</b></p>'    
+      echo "<button onclick=\"_run('./open-apps-exec.sh java')\" class=\"waves-effect waves-light btn blue-grey lighten-1 \">" $"Abrir" "</button>"
+    echo '</div>'
+    echo '<div class="col s2 center-align"><p><img src="icons/samba.png"></p><p><b>Procurar compartilhamentos</b></p><br>'    
+      echo "<button onclick=\"_run('./open-apps-exec.sh samba')\" class=\"waves-effect waves-light btn blue-grey lighten-1 \">" $"Abrir" "</button>"
+    echo '</div>'
+    echo '<div class="col s2 center-align"><p><img src="icons/theme.png"></p><p><b>Temas</b></p><br><br>'    
+      echo "<button onclick=\"_run('./open-apps-exec.sh tema')\" class=\"waves-effect waves-light btn blue-grey lighten-1 \">" $"Abrir" "</button>"
+    echo '</div>'
+
+
+
+  echo '</div>'
+echo '</div>'
+
+
+
+cat << EOF
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+    $('.tabs').tabs();
+  });
+
+</script>
+EOF
+
+
+
+
+###################
+# Close content div
+echo '</div>'
+
+##############
+# Start footer
+echo '<div id="bcc_footer">'
+      echo '<div id="bcc_footer_right">'
+        echo '<a href="/usr/share/bigbashview/close.sh" class="waves-effect waves-light btn blue-grey lighten-1"><img src=cancel.png>'$"Sair"'</a>'
+      echo '</div>'
+echo '</div>'
+
+#########
+# The end
+echo '</body>'

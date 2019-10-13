@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /usr/share/bigbashview/bcc/apps/big-reset
+bigbashview index.sh.htm -s 1050x700 -i favicon.ico

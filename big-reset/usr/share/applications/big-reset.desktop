@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Settings;
+Exec=big-reset
+Icon=/usr/share/bigbashview/bcc/apps/big-reset/logo.png
+Name[pt_BR]=BigLinux Reset
+Name=BigLinux Reset
+StartupNotify=true
+Terminal=false
+Type=Application
