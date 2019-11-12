@@ -292,24 +292,6 @@ case "$1" in
 		fi
 		exit
 		;;
-
-	emerald)
-		yad --center --title=$"BigLinux Reset" --window-icon=favicon.ico \
-			--text=$"\n\tAo restaurar o programa, as configurações que você fez nesse programa serão apagadas e a configuração original será restaurada.\n" \
-			--button="Restaurar para o padrão da distribuição":0 --button="Restaurar para o padrão do programa":1 --button="gtk-cancel":2
-		ret="$?"
-		if [ "$ret" == "0" ]; then
-			rm -r ~/.emerald
-			cp -r /etc/skel/.emerald ~/.emerald
-			kdialog --attach="$windowID" --msgbox $"Configurações da distribuição restauradas!"
-		elif [ "$ret" == "1" ]; then
-			rm -r ~/.emerald
-			kdialog --attach="$windowID" --msgbox $"Configurações padrão do programa restauradas!"
-		else
-			exit
-		fi
-		exit
-		;;
 			
 	*)
 	kdialog --attach="$windowID" --error $"ERRO: Opção inválida!"
