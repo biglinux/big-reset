@@ -93,11 +93,6 @@ echo '<div id="system" class="col s12"><br>'
       echo "<button onclick=\"_run('./big-reset-exec.sh compiz')\" class=\"waves-effect waves-light btn blue-grey lighten-1\">" $"Restaurar" "</button>"
     echo '</div>'
   fi
-  if [ "$(dpkg-query -W | grep emerald)" != "" ]; then
-    echo '<div class="col s2 center-align"><p><img src="icons/emerald.png"></p><p><b>Emerald</b></p>'    
-      echo "<button onclick=\"_run('./big-reset-exec.sh emerald')\" class=\"waves-effect waves-light btn blue-grey lighten-1\">" $"Restaurar" "</button>"
-    echo '</div>'
-  fi
 
   if [ "$(dpkg-query -W | grep konsole)" != "" ]; then
     echo '<div class="col s2 center-align"><p><img src="icons/konsole.png"></p><p><b>Konsole</b></p>'    
