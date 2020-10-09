@@ -1,12 +1,10 @@
 Package: big-reset
-Version: 1.0.0-1big2
-Depends: bigbashview
+Version: 1.0.1-0big4
+Depends: biglinux-config
 Architecture: all
-Maintainer: Elton Fabricio <www.biglinux.com.br>
+Maintainer: eltonff <eltonfabricio10@gmail.com>
 Section: admin
 Priority: optional
-Installed-Size:296
-Description: Clean configuration of apps and parts of system
-
-
+Installed-Size:520
+Description: Replaced by biglinux-config
 
